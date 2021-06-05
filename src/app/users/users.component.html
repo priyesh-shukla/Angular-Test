@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 p-0">
+          <img class="set-border" src="../../assets/page-design.png" alt="SMTest" width="100%">
+        </div>
+        <div class="col-lg-6">
+            <table class="table table-striped cart-list">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone No.</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  *ngFor="let user of userData;let q = index" class="price_table">
+                        <td><span>{{user.name}}</span></td>
+                        <td><span>{{user.phone}}</span></td>
+                        <td><span>{{user.email}} </span></td>
+                        <td><span>{{user.password}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 p-0">
+          <img class="set-border" src="../../assets/page-design.png" alt="SMTest" width="100%">
+        </div>
+        <div class="col-lg-6 p-0">
+          <div class="loginbox">
+            <div class="container">
+                <form [formGroup]="regForm" (ngSubmit)="regSubmit()" class="login-login-form">
+                  <h3 class="text-center">Welcome Back !</h3>
+                  <p class="text-center">Please Register your account.</p>
+                  <div class="alert alert-success" *ngIf="showMsg">
+                    <strong>Success!</strong> Registered Successfully.
+                  </div>
+                  <fieldset class="register-input-container">
+                    <div class="form-group">
+                        <input type="text" class="register-user-input-email register-user-input form-control input100" formControlName="name" [ngClass]="{ 'is-invalid': signupSubmitted && f.name.errors }" placeholder="Enter your Name">
+                        <span class="symbol-input100 ">
+                            <i class="fa fa-user-o " aria-hidden="true "></i>
+                            </span>
+                        <div *ngIf="signupSubmitted && f.name.errors" class="invalid-feedback">
+                            <div *ngIf="f.name.errors.required">Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" (keypress)="keyPress($event)" minlength=10 maxlength=10 class="register-user-input-email register-user-input form-control input100" formControlName="phone" [ngClass]="{ 'is-invalid':  signupSubmitted&& f.phone.errors }" placeholder="Enter your Phone Number">
+                        <span class="symbol-input100 ">
+                            <i class="fa fa-phone " aria-hidden="true "></i>
+                            </span>
+                        <div *ngIf="signupSubmitted && f.phone.errors" class="invalid-feedback">
+                            <div *ngIf="f.phone.errors.required">Phone Number is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="register-user-input-email register-user-input form-control input100" formControlName="email" [ngClass]="{ 'is-invalid':  signupSubmitted&& f.email.errors }" placeholder="Enter your Email Address">
+                        <span class="symbol-input100 ">
+                            <i class="fa fa-envelope-o " aria-hidden="true "></i>
+                            </span>
+                        <div *ngIf="signupSubmitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">Email Id is required</div>
+                            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span class="password-form-group--eye--3me-q" style="margin-top: -20px;">
+                                <i class="fa fa-fw fa-eye field-icon toggle-pass" aria-hidden="true" toggle="#spasshead"></i>
+                            </span>
+                        <input type="password" class="register-user-input-password register-user-input form-control input100" id="spasshead" formControlName="password" [ngClass]="{ 'is-invalid':  signupSubmitted&& f.password.errors }" placeholder="Enter your Password">
+                        <span class="symbol-input100 ">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                            </span>
+                        <div *ngIf="signupSubmitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                        </div>
+                    </div>
+                </fieldset>
+                    <div class="submit-row form-group">
+                        <button type="submit" class="btn btn-success login-login-button">Register</button>
+                    </div>
+                    <div class="col-lg-12">
+                      <h5 class="text-center">Already have Account  <a routerLink="/">Login Here</a></h5>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
