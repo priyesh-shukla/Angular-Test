@@ -32,17 +32,18 @@ export class RegisterComponent implements OnInit {
   showMsg : any;
   regSubmit() {
     this.signupSubmitted = true;
-    console.log(this.regForm.value);
     var userDetail = this.regForm.value;
-    var getData = JSON.parse(localStorage.getItem('Data') || '[]');
-    getData.push(userDetail);
-    localStorage.setItem('Data', JSON.stringify(getData));
-    console.log(getData.length);
-    if(getData.length > 0){
-      this.showMsg = true;
-      setTimeout(function () {
-        window.location.reload();
-      }, 3000);
+    if(this.regForm.valid){
+      var getData = JSON.parse(localStorage.getItem('Data') || '[]');
+      getData.push(userDetail);
+      localStorage.setItem('Data', JSON.stringify(getData));
+      console.log(getData.length);
+      if(getData.length > 0){
+        this.showMsg = true;
+        setTimeout(function () {
+          window.location.reload();
+        }, 3000);
+      }
     }
   }
 }

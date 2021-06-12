@@ -1,0 +1,11 @@
+.anchor{
+    text-decoration: auto;
+}
+.bottomlink{
+    position: fixed;
+    bottom:10px;
+    right: 18%;
+}
+.bottomlink a{
+    color: #8a8989;
+}

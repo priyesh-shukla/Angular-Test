@@ -34,21 +34,25 @@ export class LoginComponent implements OnInit {
   }
   get login() { return this.loginForm.controls; }
   showMsg : any;
+  showErrorMsg : any;
   setUserToken:any;
   loginformSubmit() {
     this.users = JSON.parse(localStorage.getItem('Data'));
     this.submitted = true;
     var user = this.loginForm.value;
-    console.log(user);
-    for (var i = 0; i < this.users.length; i++){
-      if(user.email == this.users[i].email && user.password == this.users[i].password){
-        localStorage.setItem('userToken', JSON.stringify(user));
+    if(this.loginForm.valid){
+      for (var i = 0; i < this.users.length; i++){
+        if(user.email == this.users[i].email && user.password == this.users[i].password){
+          localStorage.setItem('userToken', JSON.stringify(user));
+          this.showMsg = true;
+          setTimeout(function () {
+            window.location.href = '/user-list';
+          }, 3000);
+        }else{
+          this.showErrorMsg = true;
+        }
       }
-    }
-    this.showMsg = true;
-    setTimeout(function () {
-      window.location.href = '/user-list';
-      //this.router.navigate(['/user-list']);
-    }, 3000);
+
+  }
   }
 }
